@@ -18,8 +18,20 @@ Forecast = document.querySelector(".Forecast");
 WEATHER_API_ENDPOINT='https://api.openweathermap.org/data/2.5/weather?appid=';
 WEATHER_DATA_ENDPOINT='';
 
-function findUserLocation(){
-  fetch(WEATHER_API_ENDPOINT + "London")
+function findUserLocation() {
+  fetch(WEATHER_API_ENDPOINT + userLocation.value)
+  .then((response)=> response.json())
+  .then((data)=> {
+    if(data.cod!='' && data.cod!=200){
+         alert(data.message);
+         return;
+    }
+console.log(data);
+
+city.innerHTML = data.name + ", " + data.sys.country;
+    fetch(
+      WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
+  )
   .then((response)=> response.json())
   .then((data)=> {
     console.log(data);
