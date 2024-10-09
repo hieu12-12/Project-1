@@ -56,3 +56,15 @@
   cursor: pointer;
   font-size: 22px;
 }
+
+
+.weather-output
+{
+   width: 60%;
+   position: fixed;
+   inset: 0;
+   margin-left: 40%;
+   padding: 2rem;
+   background: white;
+   overflow: auto;
+}
