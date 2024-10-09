@@ -58,8 +58,7 @@
 }
 
 
-.weather-output
-{
+.weather-output {
    width: 60%;
    position: fixed;
    inset: 0;
@@ -67,4 +66,33 @@
    padding: 2rem;
    background: white;
    overflow: auto;
+}
+
+.Highlights{
+  display: grid;
+  grid-template-columns: repeat(3m 3350px);
+  grid-auto-flow: row;
+  row-gap: 1rem;
+  column-gap: 10px;
+}
+
+.Highlights div{
+  height: 200px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: green;
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.Highlights i{
+  font-size: 45px;
+}
+
+.sun span{
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }
