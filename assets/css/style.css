@@ -5,6 +5,15 @@
   font-family: "Poppins";
   box-sizing: border-box;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #83838398;
+}
+
 .body {
   height: 100vh;
 
@@ -84,6 +93,18 @@ margin: 2rem auto;
 .weather-input .date,
 .weather-input .city{
  padding: 10px 0;
+}
+
+.temperature {
+  font-size: 5rem;
+  text-align: center;
+  display: flex;
+  font-weight: 300;
+}
+
+.temperature span {
+  font-size: 2rem;
+  margin-top: 20px;
 }
 
 .Highlights {
