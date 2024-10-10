@@ -1,4 +1,4 @@
-const userLocation = document.getElementById('userLocation'),
+const userLocation = document.getElementById("userLocation"),
 converter = document.getElementById("converter"),
 weatherIcon = document.querySelector(".weatherIcon"),
 temperature = document.querySelector(".temperature"),
@@ -16,7 +16,7 @@ PValue = document.getElementById("PValue"),
 Forecast = document.querySelector(".Forecast");
 
 WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=` ;
-WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
+WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/onecall?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
 
 function findUserLocation() {
   fetch(WEATHER_API_ENDPOINT + userLocation.value)
@@ -30,9 +30,8 @@ function findUserLocation() {
 
     city.innerHTML = data.name + ", " + data.sys.country;
     weatherIcon.style.background=`url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
-    fetch(
-      WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
-    
+    fetch(WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`
+    )
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -40,7 +39,7 @@ function findUserLocation() {
       temperature.innerHTML=data.current.temp;
       feelsLike.innerHTML="Feels like" + data.current.feels_like;
       description.innerHTML= 
-      '<i class="fa-bands fa-cloudversify"></i> &nbsp;' +
+      '<i class="fa-brands fa-cloudversify"></i> &nbsp;' +
       data.current.weather[0].description;
 
       const options = {
@@ -72,11 +71,11 @@ function findUserLocation() {
   });
 }
 
-function formatUtixTime(dtValue, offSet, options={}) {
+function formatUnixTime(dtValue, offSet, options={}) {
   const date = new Date((dtValue + offSet) * 1000);
   return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
 };
 
 function getLongFormatDateTime(dtValue, offSet, options) {
-  return formatUtixTime(dtValue, offSet, options);
+  return formatUnixTime(dtValue, offSet, options);
 };
