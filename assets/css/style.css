@@ -70,7 +70,7 @@
 
 .Highlights{
   display: grid;
-  grid-template-columns: repeat(3m 3350px);
+  grid-template-columns: repeat(3, 3350px);
   grid-auto-flow: row;
   row-gap: 1rem;
   column-gap: 10px;
@@ -82,7 +82,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: green;
+  background-color: blue;
   border-radius: 20px;
   padding: 1rem;
 }

@@ -15,13 +15,13 @@ UVValue = document.getElementById("UVValue"),
 PValue = document.getElementById("PValue"),
 Forecast = document.querySelector(".Forecast");
 
-WEATHER_API_ENDPOINT='https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=';
-WEATHER_DATA_ENDPOINT='https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&';
+WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=` ;
+WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
 
 function findUserLocation() {
   fetch(WEATHER_API_ENDPOINT + userLocation.value)
-  .then((response)=> response.json())
-  .then((data)=> {
+  .then((response) => response.json())
+  .then((data) => {
     if(data.cod!='' && data.cod!=200){
          alert(data.message);
          return;
@@ -32,9 +32,9 @@ function findUserLocation() {
     fetch(
       WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
     
-    .then((response)=> response.json())
-    .then((data)=> {
+    .then((response) => response.json())
+    .then((data) => {
       console.log(data);
     });
   });
-};
+}
