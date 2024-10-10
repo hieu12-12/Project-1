@@ -42,10 +42,26 @@ function findUserLocation() {
       '<i class="fa-bands fa-cloudversify"></i> &nbsp;' +
       data.current.weather[0].description;
 
+      const options = {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }
+
+      date.innerHTML = getLongFormatDateTime(date.current.dt, date.timezone_offset, options)
+
       HValue.innerHTML=Math.round(data.current.humidity)+"<span>%</span>";
       WValue.innerHTML=Math.round(data.current.wind_speed)+"<span>m/s</span>";
-      SRValue.innerHTML="";
-      SSValue.innerHTML="";
+      const options1 = {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      }
+      SRValue.innerHTML=getLongFormatDateTime(data.current.sunrise, data.timezone_offset, options1);
+      SSValue.innerHTML=getLongFormatDateTime(data.current.sunset, data.timezone_offset, options1);
 
       CValue.innerHTML=data.current.clouds+"<span>%</span>";
       UVValue.innerHTML=data.current.uvi;
@@ -54,3 +70,12 @@ function findUserLocation() {
     });
   });
 }
+
+function formatUtixTime(dtValue, offSet, options={}) {
+  const date = new Date((dtValue + offSet) * 1000);
+  return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
+};
+
+function getLongFormatDateTime(dtValue, offSet, options) {
+  return formatUtixTime(dtValue, offSet, options);
+};

@@ -15,7 +15,7 @@
 }
 
 .weather-input {
-  width: 40%;
+  width: 25%;
   position: fixed;
   inset: 0;
   background: rgb(126, 126, 126);
@@ -59,10 +59,10 @@
 
 
 .weather-output {
-   width: 60%;
+   width: 75%;
    position: fixed;
    inset: 0;
-   margin-left: 40%;
+   margin-left: 25%;
    padding: 2rem;
    background: white;
    overflow: auto;
