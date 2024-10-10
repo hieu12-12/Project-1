@@ -79,6 +79,13 @@ margin: 2rem auto;
    overflow: auto;
 }
 
+.weather-input .feelsLike,
+.weather-input .description,
+.weather-input .date,
+.weather-input .city{
+ padding: 10px 0;
+}
+
 .Highlights {
   display: grid;
   grid-template-columns: repeat(3, 350px);
