@@ -35,6 +35,22 @@ function findUserLocation() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+
+      temperature.innerHTML=data.current.temp;
+      feelsLike.innerHTML="Feels like" + data.current.feels_like;
+      description.innerHTML= 
+      '<i class="fa-bands fa-cloudversify"></i> &nbsp;' +
+      data.current.weather[0].description;
+
+      HValue.innerHTML=Math.round(data.current.humidity)+"<span>%</span>";
+      WValue.innerHTML=Math.round(data.current.wind_speed)+"<span>m/s</span>";
+      SRValue.innerHTML="";
+      SSValue.innerHTML="";
+
+      CValue.innerHTML=data.current.clouds+"<span>%</span>";
+      UVValue.innerHTML=data.current.uvi;
+      PValue.innerHTML=data.current.pressure+"<span>hPa</span>";
+
     });
   });
 }
