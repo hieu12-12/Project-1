@@ -29,7 +29,7 @@ function findUserLocation() {
     console.log(data);
 
     city.innerHTML = data.name + ", " + data.sys.country;
-    weatherIcon.style.background=`url(https://openweathermap.org/img/wn/${data.weather[0]}@2x.png)`
+    weatherIcon.style.background=`url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
     fetch(
       WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
     
