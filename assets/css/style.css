@@ -4,6 +4,7 @@
   padding: 0px;
   font-family: "Poppins";
   box-sizing: border-box;
+  
 }
 
 ::-webkit-scrollbar {
@@ -12,11 +13,6 @@
 
 ::-webkit-scrollbar-thumb {
   background: #83838398;
-}
-
-.body {
-  height: 100vh;
-
 }
 
 .container {
@@ -34,7 +30,7 @@
 
 
 .weatherIcon{
-  background-position: 50% !important;
+background-position: 50% !important;
 background-repeat: no-repeat !important;
 background-size: contain;
 display: block;
