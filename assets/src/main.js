@@ -96,6 +96,13 @@ function formatUnixTime(dtValue, offSet, options={}) {
   return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
 };
 
-function getLongFormatDateTime(dtValue, offSet, options) {
-  return formatUnixTime(dtValue, offSet, options);
-};
+function TemConverter(temp){
+    let tempValue=Math.round(temp);
+    let message="";
+     if(converter.value=="°C"){
+     message=tempValue+"<span>"+"\xB0C</span>";
+     else{
+      let ctof=(tempValue*9)/5+32;
+      message=tempValue+"<span>"+"\xB0f</span>";
+     }
+}
