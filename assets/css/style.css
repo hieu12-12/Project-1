@@ -28,7 +28,7 @@
   width: 40%;
   position: fixed;
   inset: 0;
-  background: rgb(58, 58, 59);
+  background: rgb(125, 203, 255);
   padding: 1rem 2.5rem;
 }
 
@@ -129,7 +129,7 @@ margin: 2rem auto;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: blue;
+  background-color: rgb(99, 212, 247);
   border-radius: 20px;
   padding: 1rem;
 }
