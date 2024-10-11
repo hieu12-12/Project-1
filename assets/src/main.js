@@ -37,8 +37,8 @@ function findUserLocation() {
     .then((data) => {
       console.log(data);
 
-      temperature.innerHTML=data.main.temp;
-      feelsLike.innerHTML=`Feels like ${data.main.feels_like}`;
+      temperature.innerHTML=`${data.main.temp}°`;
+      feelsLike.innerHTML=`Feels like ${data.main.feels_like}°`;
       description.innerHTML= 
       '<i class="fa-brands fa-cloudversify"></i> &nbsp;' +
       data.weather[0].description;
