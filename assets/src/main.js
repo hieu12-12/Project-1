@@ -82,28 +82,30 @@ function findUserLocation() {
 
        div.innerHTML= daily[0];
        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`
-       div.innerHTML+= `<p class="forecast-desc>${weather.weather[0].description}>"`
-      div.innerHTML += <span></span>${TempConverter}(weather.temp)<span></span>
-        Forecast.append(div);
-      })
-
+       div.innerHTML+= `<p class="forecast-desc>${data.weather[0].description}"></p>`;
+      div.innerHTML += `<span><span>${TempConverter(
+      weather.temp.min
+      )}</span>&nbsp;&nbsp;<span>${TempConverter(
+        weather.temp.max
+      )}</span></span>`;
+      Forecast.append(div);
     });
   });
-}
+});
 
 function formatUnixTime(dtValue, offSet, options={}) {
   const date = new Date((dtValue + offSet) * 1000);
   return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
 };
 
-function TemConverter(temp){
+function TempConverter(temp){
     let tempValue=Math.round(temp);
     let message="";
      if(converter.value=="°C"){
      message=tempValue+"<span>"+"\xB0C</span>";
-     else{
-      let ctof=(tempValue*9)/5+32;
-      message=tempValue+"<span>"+"\xB0f</span>";
+     } else {
+      let ctof=(tempValue * 9) / 5 + 32;
+      message= ctof + "<span>" + "\xB0f</span>";
      }
-}
-}
+     return message;
+}}
