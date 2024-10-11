@@ -83,7 +83,7 @@ function findUserLocation() {
        div.innerHTML= daily[0];
        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`
        div.innerHTML+= `<p class="forecast-desc>${weather.weather[0].description}>"`
-
+      div.innerHTML += <span></span>${TempConverter}(weather.temp)<span></span>
         Forecast.append(div);
       })
 
@@ -105,4 +105,5 @@ function TemConverter(temp){
       let ctof=(tempValue*9)/5+32;
       message=tempValue+"<span>"+"\xB0f</span>";
      }
+}
 }
