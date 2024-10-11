@@ -11,7 +11,6 @@ WValue = document.getElementById("WValue"),
 SRValue = document.getElementById("SRValue"),
 SSValue = document.getElementById("SSValue"),
 CValue = document.getElementById("CValue"),
-UVValue = document.getElementById("UVValue"),
 PValue = document.getElementById("PValue"),
 Forecast = document.querySelector(".forecast");
 
@@ -67,7 +66,6 @@ function findUserLocation() {
       SSValue.innerHTML=getLongFormatDateTime(data.sys.sunset, data.timezone, options1);
 
       CValue.innerHTML=data.clouds.all+"<span>%</span>";
-      UVValue.innerHTML=data.main.uvi;
       PValue.innerHTML=data.main.pressure+"<span>hPa</span>";
 
       data.daily.forEach((weather)=> {
