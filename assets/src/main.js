@@ -23,7 +23,7 @@ function findUserLocation() {
   .then((response) => response.json())
   .then((data) => {
     if(data.cod!='' && data.cod!=200){
-         alert(data.message);
+         alert(location.not.found);
          return;
     }
     console.log(data);
