@@ -19,6 +19,7 @@ WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b
 WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
 
 function findUserLocation() {
+  Forecast.innerHTML="";
   fetch(WEATHER_API_ENDPOINT + userLocation.value)
   .then((response) => response.json())
   .then((data) => {
@@ -66,6 +67,25 @@ function findUserLocation() {
       CValue.innerHTML=data.main.clouds+"<span>%</span>";
       UVValue.innerHTML=data.main.uvi;
       PValue.innerHTML=data.main.pressure+"<span>hPa</span>";
+
+      data.daily.forEach((weather)=> {
+        let div =document.createElement("div");
+
+        const options={
+          weather:'long',
+          month:'long',
+          day:"numberic"
+        };
+        let daily = getLongFormatDateTime(weather.dt, 0, options).split(
+          " at "
+        );
+
+       div.innerHTML= daily[0];
+       div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`
+       div.innerHTML+= `<p class="forecast-desc>${weather.weather[0].description}>"`
+
+        Forecast.append(div);
+      })
 
     });
   });

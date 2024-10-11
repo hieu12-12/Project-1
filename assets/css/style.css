@@ -94,6 +94,14 @@ margin: 2rem auto;
   column-gap: 10px;
 }
 
+.Forecast {
+  display: grid;
+  grid-template-columns: repeat(4,260px);
+  grid-auto-flow: row;
+  row-gap: 1rem;
+  column-gap: 10px;
+}
+
 .Highlights div {
   height: 200px;
   display: grid;
