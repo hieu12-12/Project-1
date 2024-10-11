@@ -52,19 +52,21 @@ function findUserLocation() {
         hour12: true,
       }
 
-      date.innerHTML = getLongFormatDateTime(date.dt, date.timezone_offset, options)
+      date.innerHTML = getLongFormatDateTime(data.dt, data.timezone, options)
 
       HValue.innerHTML=Math.round(data.main.humidity)+"<span>%</span>";
-      WValue.innerHTML=Math.round(data.main.wind_speed)+"<span>m/s</span>";
+      WValue.innerHTML=Math.round(data.wind.speed)+"<span>m/s</span>";
+
       const options1 = {
         hour: 'numeric',
         minute: 'numeric',
         hour12: true,
       }
-      SRValue.innerHTML=getLongFormatDateTime(data.main.sunrise, data.timezone_offset, options1);
-      SSValue.innerHTML=getLongFormatDateTime(data.main.sunset, data.timezone_offset, options1);
 
-      CValue.innerHTML=data.main.clouds+"<span>%</span>";
+      SRValue.innerHTML=getLongFormatDateTime(data.sys.sunrise, data.timezone, options1);
+      SSValue.innerHTML=getLongFormatDateTime(data.sys.sunset, data.timezone, options1);
+
+      CValue.innerHTML=data.clouds.all+"<span>%</span>";
       UVValue.innerHTML=data.main.uvi;
       PValue.innerHTML=data.main.pressure+"<span>hPa</span>";
 
