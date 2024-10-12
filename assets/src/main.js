@@ -106,7 +106,7 @@ function getLongFormatDateTime(dtValue, offSet, options) {
   return formatUnixTime(dtValue, offSet, options);
 };
 
-function TempConverter(temp){
+function TemConverter(temp){
     let tempValue=Math.round(temp);
     let message="";
      let(converter.value=="°C");{
