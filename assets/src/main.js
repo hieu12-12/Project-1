@@ -17,6 +17,8 @@ Forecast = document.querySelector(".forecast");
 WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=` ;
 WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
 
+findUserLocation(userLocation.value = localStorage.getItem("location"));
+
 function findUserLocation() {
   Forecast.innerHTML="";
   fetch(WEATHER_API_ENDPOINT + userLocation.value)
@@ -27,6 +29,8 @@ function findUserLocation() {
          return;
     }
     console.log(data);
+
+    localStorage.setItem("location", userLocation.value);
 
     city.innerHTML = data.name + ", " + data.sys.country;
     weatherIcon.style.background=`url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
