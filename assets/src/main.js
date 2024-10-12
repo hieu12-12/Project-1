@@ -109,11 +109,10 @@ function getLongFormatDateTime(dtValue, offSet, options) {
 function TempConverter(temp){
     let tempValue=Math.round(temp);
     let message="";
-     if(converter.value=="°C"){
+     let(converter.value=="°C");{
      message=tempValue+"<span>"+"\xB0C</span>";
-     } else {
-      let ctof=(tempValue * 9) / 5 + 32;
+ } let ctof=(tempValue * 9) / 5 + 32;
       message= ctof + "<span>" + "\xB0f</span>";
      }
      return message;
-}}
+    }
