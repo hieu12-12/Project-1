@@ -98,6 +98,10 @@ function formatUnixTime(dtValue, offSet, options={}) {
   return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
 };
 
+function getLongFormatDateTime(dtValue, offSet, options) {
+  return formatUnixTime(dtValue, offSet, options);
+};
+
 function TempConverter(temp){
     let tempValue=Math.round(temp);
     let message="";
