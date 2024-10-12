@@ -107,12 +107,13 @@ function getLongFormatDateTime(dtValue, offSet, options) {
 };
 
 function TemConverter(temp){
-    let tempValue=Math.round(temp);
-    let message="";
-     let(converter.value=="°C");{
-     message=tempValue+"<span>"+"\xB0C</span>";
- } let ctof=(tempValue * 9) / 5 + 32;
-      message= ctof + "<span>" + "\xB0f</span>";
-     }
-     return message;
-    }
+  let tempValue=Math.round(temp);
+  let message="";
+   if(converter.value=="°C"){
+   message=tempValue+"<span>"+"\xB0C</span>";
+   } else {
+    let ctof=(tempValue * 9) / 5 + 32;
+    message= ctof + "<span>" + "\xB0f</span>";
+   }
+   return message;
+}}
