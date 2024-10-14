@@ -20,11 +20,11 @@
   align-items: center;
 }
 
-.weather-input {
+.weather-input {   
   width: 40%;
   position: fixed;
   inset: 0;
-  background: rgb(125, 203, 255);
+  
   padding: 1rem 2.5rem;
 }
 
@@ -103,9 +103,9 @@ margin: 2rem auto;
   margin-top: 20px;
 }
 
-.Highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 350px);
+.Highlights {  /*Today highlights boxes*/
+  display:grid;
+  grid-template-columns: repeat(1, 350px);
   grid-auto-flow: row;
   row-gap: 1rem;
   column-gap: 10px;
@@ -125,7 +125,7 @@ margin: 2rem auto;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgb(99, 212, 247);
+  background-color: rgb(109, 216, 235);
   border-radius: 20px;
   padding: 1rem;
 }
