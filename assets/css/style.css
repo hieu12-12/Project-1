@@ -22,7 +22,7 @@ body {
   position: relative;
   transition: 500ms;
   opacity: 1;
-  color: #fff;
+  color: #ffffffe3;
  
 }
 body::before {
@@ -97,9 +97,15 @@ margin: 2rem auto;
 .input-group .fa-search {
   position: absolute;
   right: 15px;
-  color: #ff5e00;
+  color: #ff5e00; /* Default color */
   cursor: pointer;
-  font-size: 22px;
+  font-size: 25px;
+  transition: color 300ms ease; /* Smooth color transition */
+}
+
+.input-group .fa-search:hover {
+  color: #444444 ; /* Color when hovered */
+  background-color: #9999990c;
 }
 
 
