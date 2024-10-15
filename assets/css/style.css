@@ -106,7 +106,7 @@ margin: 2rem auto;
    width: 60%;
    position: fixed;
    inset: 0;
-   margin-left: 50%;
+   margin-left: 45%;
    padding: 3rem;
    overflow: auto;
 
@@ -133,6 +133,7 @@ margin: 2rem auto;
 
 
 .heading {
+  width: 850px;
   inset: 0;
   padding: 20px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
@@ -144,16 +145,26 @@ margin: 2rem auto;
 
 }
 
-.Highlights {  /*Today highlights boxese*/
-  display:grid;
+.Highlights {
+  width: 850px;
+  height: 600px;
+  display: grid;
+  margin-top: 40px;
   grid-template-columns: repeat(3, 250px);
-  grid-auto-flow:row;
+  grid-auto-flow: row;
+  color:rgba(255, 255, 255, 0.856);
   row-gap: 1rem;
   column-gap: 10px;
-
-  
-
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 20px; /* Optional: Add padding for inner spacing */
+  border-radius: 0px; /* Optional: Add rounded corners */
+  background-color: rgba(255, 255, 255, 0.1); /* Optional: Light transparent background */
 }
+
+
 
 .Forecast {
   display: grid;
