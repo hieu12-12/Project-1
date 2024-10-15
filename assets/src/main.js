@@ -95,3 +95,11 @@ function TempConverter(temp) {
    }
    return message;
 }}
+
+function search(event) {
+  if (event.key === 'Enter') {
+    findUserLocation();
+  };
+}
+
+userLocation.addEventListener('keydown', search)
