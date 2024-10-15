@@ -132,12 +132,25 @@ margin: 2rem auto;
 }
 
 
+.heading {
+  inset: 0;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(px);
+  -webkit-backdrop-filter: blur(10px);
+  border:
+  1px solid 
+  rgba(255, 255, 255, 0.18);
+
+}
+
 .Highlights {  /*Today highlights boxese*/
   display:grid;
   grid-template-columns: repeat(3, 250px);
   grid-auto-flow:row;
   row-gap: 1rem;
   column-gap: 10px;
+
   
 
 }
@@ -162,7 +175,6 @@ margin: 2rem auto;
 
 .Highlights i {
   font-size: 45px;
-  
 }
 
 .sun span{
