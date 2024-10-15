@@ -1,90 +1,93 @@
 <!DOCTYPE html>
+
 <html lang="en">
  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather App - By The Byte Battalion</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
-  <script defer src="./assets/src/main.js"></script>
-<link
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Weather App - By The Byte Battalion</title>
+   <link rel="stylesheet" href="./assets/css/style.css" />
+   <link
    rel="stylesheet"
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-  />
-</head>
-<body>
-  <div class="weather-app">
-   <div class="container">
-    <div class="weather-input">
-      <div class="input-group">
-        <input
-        type="text"
-        id="userLocation"
-        placeholder="Searching for places..."
-        />
+   />
+ </head>
 
-        <select class="converter" id="converter">
-          <option>°C</option>
-          <option>°F</option>
-        </select>
+ <body>
+   <main class="weather-app">
+     <div class="container">
+       <section class="weather-input">
+         <div class="input-group">
+           <input
+             type="text"
+             id="userLocation"
+             placeholder="Searching for places..."
+            />
 
-        <i class="fa fa-search" onclick="findUserLocation()"></i>
-      </div>
-      <div class="weatherIcon"></div>
-      <h2 class="temperature"></h2>
-      <div class="feelsLike"></div>
-      <div class="description"></div>
-      <hr />
-      <div class="date"></div>
-      <div class="city"></div>
-    </div>
+           <select class="converter" id="converter">
+             <option>°C</option>
+             <option>°F</option>
+           </select>
 
-    <div class="weather-output">
-      <h2 class="heading">Today's Highlights</h2>
-      <div class="Highlights">
-        <div class="humidity">
-          Humidity
-          <i class="fa-solid fa-water"></i>
-          <h1 id="HValue"></h1>
-        </div>
+           <i class="fa fa-search" onclick="findUserLocation()"></i>
+         </div>
+         <div class="weatherIcon"></div>
+         <h2 class="temperature"></h2>
+         <div class="feelsLike"></div>
+         <div class="description"></div>
+         <hr />
+         <div class="date"></div>
+         <div class="city"></div>
+       </section>
+
+       <section class="weather-output">
+         <h2 class="heading">Today's Highlights</h2>
+         <section class="Highlights">
+           <div class="humidity">
+             Humidity
+             <i class="fa-solid fa-water"></i>
+             <h1 id="HValue"></h1>
+           </div>
       
+           <div class="wind-speed">
+             Wind Speed
+             <i class="fa-solid fa-wind"></i>
+             <h1 id="WValue"></h1>
+           </div>
 
-       <div class="wind-speed">
-        Wind Speed
-        <i class="fa-solid fa-wind"></i>
-        <h1 id="WValue"></h1>
-       </div>
-       <div class="sun">
-        <span>
-          <i class="fa-solid fa-sun"></i>
-          <p><span id="SRValue"></span>Sunrise</p>
-        </span>
-        <span>
-          <i class="fa-regular fa-sun"></i>
-          <p><span id="SSValue"></span>Sunset</p>
-        </span>
-       </div>
-       <div class="clouds">
-        Clouds
-        <i class="fa-solid fa-cloud"></i>
-        <h1 id="CValue"></h1>
-       </div>
-       <div class="pressure">
-        Pressure
-        <i class="fa-solid fa-volcano"></i>
-        <h1 id="PValue"></h1>
-       </div>
-      </div>
-      <br />
+           <div class="sun">
+             <span>
+               <i class="fa-solid fa-sun"></i>
+               <p><span id="SRValue"></span>Sunrise</p>
+             </span>
+             <span>
+               <i class="fa-regular fa-sun"></i>
+               <p><span id="SSValue"></span>Sunset</p>
+             </span>
+           </div>
+
+           <div class="clouds">
+              Clouds
+             <i class="fa-solid fa-cloud"></i>
+             <h1 id="CValue"></h1>
+           </div>
+
+           <div class="pressure">
+             Pressure
+             <i class="fa-solid fa-volcano"></i>
+             <h1 id="PValue"></h1>
+           </div>
+         </section>
+         <br />
       
-    </div>
-   </div>
- </div>
+        </section>
+     </div>
+    </main>
 
-  <br />
-  
-  <div class="forecast"></div>
-</body>
-<script src="./assets/src/main.js"></script>
+   <br />
+   <div class="forecast">
+ </body>
+ <script src="./assets/src/main.js"></script>
+
 </html>
 
 

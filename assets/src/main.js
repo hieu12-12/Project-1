@@ -71,29 +71,6 @@ function findUserLocation() {
 
       CValue.innerHTML=data.clouds.all+"<span>%</span>";
       PValue.innerHTML=data.main.pressure+"<span>hPa</span>";
-
-      data.daily.forEach((weather)=> {
-        let div =document.createElement("div");
-
-        const options={
-          weather:'long',
-          month:'long',
-          day:"numberic"
-        };
-        let daily = getLongFormatDateTime(weather.dt, 0, options).split(
-          " at "
-        );
-
-       div.innerHTML= daily[0];
-       div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" />`
-       div.innerHTML+= `<p class="forecast-desc>${data.weather[0].description}"></p>`;
-      div.innerHTML += `<span><span>${TempConverter(
-      data.temp_min
-      )}</span>&nbsp;&nbsp;<span>${TempConverter(
-        data.temp_max
-      )}</span></span>`;
-      Forecast.append(div);
-    });
   });
 });
 
