@@ -1,193 +1,139 @@
-userLocation = document.getElementById("userLocation")
-converter = document.getElementById("converter"),
-weatherIcon = document.querySelector(".weatherIcon"),
-temperature = document.querySelector(".temperature"),
-feelsLike = document.querySelector(".feelsLike"),
-description = document.querySelector(".description"),
-date = document.querySelector(".date"),
-city = document.querySelector(".city"),
-HValue = document.getElementById("HValue"),
-WValue = document.getElementById("WValue"),
-SRValue = document.getElementById("SRValue"),
-SSValue = document.getElementById("SSValue"),
-CValue = document.getElementById("CValue"),
-PValue = document.getElementById("PValue"),
-Forecast = document.querySelector(".forecast");
+const userLocation = document.getElementById("userLocation"),
+  converter = document.getElementById("converter"),
+  weatherIcon = document.querySelector(".weatherIcon"),
+  temperature = document.querySelector(".temperature"),
+  feelsLike = document.querySelector(".feelsLike"),
+  description = document.querySelector(".description"),
+  date = document.querySelector(".date"),
+  city = document.querySelector(".city"),
+  HValue = document.getElementById("HValue"),
+  WValue = document.getElementById("WValue"),
+  SRValue = document.getElementById("SRValue"),
+  SSValue = document.getElementById("SSValue"),
+  CValue = document.getElementById("CValue"),
+  PValue = document.getElementById("PValue"),
+  Forecast = document.querySelector(".forecast"),
+  app = document.querySelector(".app"),
+  btn = document.querySelector(".btn");
 
-WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=` ;
-WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&` ;
+const WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=`,
+  WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&`;
 
-findUserLocation(userLocation.value = localStorage.getItem("location") || "Orlando", converter.value = localStorage.getItem("tempType") || "°F");
-
-function findUserLocation() {
-  Forecast.innerHTML="";
-  fetch(WEATHER_API_ENDPOINT + userLocation.value)
-  .then((response) => response.json())
-  .then((data) => {
-    if(data.cod!='' && data.cod!=200){
-         alert("Location not found");
-         return;
-    }
-    console.log(data);
-
-    localStorage.setItem("location", userLocation.value);
-    localStorage.setItem("tempType", converter.value);
-
-    city.innerHTML = data.name + ", " + data.sys.country;
-    weatherIcon.style.background=`url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`
-    fetch(WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`
-    )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-
-      temperature.innerHTML = TempConverter(data.main.temp);
-      feelsLike.innerHTML=`Feels like ${TempConverter(data.main.feels_like)}`;
-      description.innerHTML= 
-      '<i class="fa-brands fa-cloudversify"></i> &nbsp;' +
-      data.weather[0].description;
-
-      const options = {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true,
-      }
-
-      date.innerHTML = getLongFormatDateTime(data.dt, data.timezone, options)
-
-      HValue.innerHTML=Math.round(data.main.humidity)+"<span>%</span>";
-      WValue.innerHTML=Math.round(data.wind.speed)+"<span>m/s</span>";
-
-      const options1 = {
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true,
-      }
-
-      SRValue.innerHTML=getLongFormatDateTime(data.sys.sunrise, data.timezone, options1);
-      SSValue.innerHTML=getLongFormatDateTime(data.sys.sunset, data.timezone, options1);
-
-      CValue.innerHTML=data.clouds.all+"<span>%</span>";
-      PValue.innerHTML=data.main.pressure+"<span>hPa</span>";
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  findUserLocation();
 });
 
-function formatUnixTime(dtValue, offSet, options={}) {
-  const date = new Date((dtValue + offSet) * 1000);
-  return date.toLocaleTimeString([], {timeZone: "UTC", ...options });
-};
+// Function to find user location and fetch weather data
+function findUserLocation() {
+  Forecast.innerHTML = "";
+  const location = userLocation.value || localStorage.getItem("location") || "Orlando";
+  const tempType = converter.value || localStorage.getItem("tempType") || "°F";
 
-function getLongFormatDateTime(dtValue, offSet, options) {
-  return formatUnixTime(dtValue, offSet, options);
-};
+  localStorage.setItem("location", location);
+  localStorage.setItem("tempType", tempType);
 
+  fetch(WEATHER_API_ENDPOINT + location)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.cod != 200) {
+        alert("Location not found");
+        return;
+      }
+      displayWeatherData(data);
+    });
+}
+
+// Function to display weather data
+function displayWeatherData(data) {
+  city.innerHTML = `${data.name}, ${data.sys.country}`;
+  weatherIcon.style.background = `url(https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png)`;
+
+  fetch(WEATHER_DATA_ENDPOINT + `lon=${data.coord.lon}&lat=${data.coord.lat}`)
+    .then((response) => response.json())
+    .then((data) => {
+      temperature.innerHTML = TempConverter(data.main.temp);
+      feelsLike.innerHTML = `Feels like ${TempConverter(data.main.feels_like)}`;
+      description.innerHTML = `<i class="fa-brands fa-cloudversify"></i> &nbsp;${data.weather[0].description}`;
+
+      const dateOptions = { weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "numeric", hour12: true };
+      date.innerHTML = getLongFormatDateTime(data.dt, data.timezone, dateOptions);
+
+      HValue.innerHTML = `${Math.round(data.main.humidity)}<span>%</span>`;
+      WValue.innerHTML = `${Math.round(data.wind.speed)}<span>m/s</span>`;
+
+      const timeOptions = { hour: "numeric", minute: "numeric", hour12: true };
+      SRValue.innerHTML = getLongFormatDateTime(data.sys.sunrise, data.timezone, timeOptions);
+      SSValue.innerHTML = getLongFormatDateTime(data.sys.sunset, data.timezone, timeOptions);
+
+      CValue.innerHTML = `${data.clouds.all}<span>%</span>`;
+      PValue.innerHTML = `${data.main.pressure}<span>hPa</span>`;
+
+      updateBackground(data);
+    });
+}
+
+// Convert temperature based on the chosen unit
 function TempConverter(temp) {
-  let tempValue=Math.round(temp);
-  let message="";
-   if(converter.value=="°C"){
-   message=tempValue+"<span>"+"\xB0C</span>";
-   } else {
-    let ctof=(tempValue * 9) / 5 + 32;
-    message= ctof + "<span>" + "\xB0F</span>";
-   }
-   return message;
-}}
-
-function search(event) {
-  if (event.key === 'Enter') {
-    findUserLocation();
-  };
+  let tempValue = Math.round(temp);
+  return converter.value === "°C" ? `${tempValue}<span>°C</span>` : `${(tempValue * 9) / 5 + 32}<span>°F</span>`;
 }
 
-userLocation.addEventListener('keydown', search)
 
-timeOfDay = "day";
-code = data.current.condition.code;
+function updateBackground(data) {
+  // Log the entire weather data to check for errors
+  console.log(data);
 
-if(!data.current.is_day) {
-  timeOfDay ="night";
-}
+  
+  const currentTime = data.dt; 
+  const sunrise = data.sys.sunrise; 
+  const sunset = data.sys.sunset;
 
-if(code == 1000) {
-  app.style.backgroundImage = `
-  url(/assets/images/${timeOfDay}/sunset\ cloud.jpg)`
-}
+  // Determine if it's day or night
+  let timeOfDay = currentTime >= sunrise && currentTime < sunset ? "day" : "night";
+  console.log("Time of day:", timeOfDay);
 
-let timeOfDay = "day";
+  
+  let code = data.weather[0].id;
+  console.log("Weather condition code:", code);
 
-const code = data.current.condition.code;
+  // Clear weather (code 800)
+  if (code == 800) { // Clear sky
+    app.style.backgroundImage = `url('./assets/images/clear-cloud.jpg')`; 
+    btn.style.background = timeOfDay === "night" ? "#181e27" : "#e5ba92"; 
 
-if (!data.current.is_day) {
-  timeOfDay = "night;"
-}
+  // Cloudy weather
+  } else if ([801, 802, 803, 804].includes(code)) { 
+    app.style.backgroundImage = `url('./assets/images/sunset-cloud.jpg')`; 
+    btn.style.background = timeOfDay === "night" ? "#181e27" : "#fa6d1b";
 
-if (code == 1000) {
+  // Rainy weather
+  } else if ([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].includes(code)) { 
+    app.style.backgroundImage = `url('./assets/images/raining-cloud.jpg')`; 
+    btn.style.background = timeOfDay === "night" ? "#325c80" : "#647d75";
 
-
-  app.style.backgroundImage = 
-  `url(../images/${timeOfDay}/clear.jpg);`
-
-
-  BigInt.style.background = "#e5ba92";
-  if(timeOfDay == "night") {
-  BigInt.style.background = "#181e27";
-  }
-  } else if (
-  code == 1003 || 
-  code == 1006 || 
-  code == 1009 || 
-  code == 1030,
-  code == 1069,
-  code == 1087,
-  code == 1135,
-  code == 1273,
-  code == 1276,
-  code == 1282 
-  ) {
-  app.style.backgroundImage = `
-  url(.images/${timeOfDay}/cloudy.jpg)`;
-  btn.style.background = "#fa6d1b";
-  if(timeOfDay == "night") {
-    btn.style.background = "#181e27";
+  // Snowy weather
+  } else if ([600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622].includes(code)) { 
+    app.style.backgroundImage = `url('./assets/images/snow-sky.jpg')`; 
+    btn.style.background = timeOfDay === "night" ? "#1b1b1b" : "#4D72aa";
   }
 
-  } else if (
-  code == 1063,
-  code == 1069,
-  code == 1072,
-  code == 1150,
-  code == 1153,
-  code == 1180,
-  code == 1183,
-  code == 1189,
-  code == 1192,
-  code == 1195,
-  code == 1204,
-  code == 1207,
-  code == 1240,
-  code == 1243,
-  code == 1246,
-  code == 1249,
-  code == 1252
-  ) {
-  app.style.backgroundImage = `
-  url(./images/${timeOfDay}/rainy.jpg)`;
-  btn.style.background = "#647d75";
-  if(timeOfDay == "night") {
-    btn.style.background = "#325c80";
-  }
-
-  } else {
-  app.style.backgroundImage = `
-  url(./images/${timeOfDay}/snowy.jpg)`;
-  btn.style.background = "#4D72aa";
-  if(timeOfDay == "night") {
-    btn.style.background = "#1b1b1b";
-   }
-
+  // Ensure the app content is visible
   app.style.opacity = "1";
 }
 
+// Function to format Unix time
+function getLongFormatDateTime(dtValue, offSet, options) {
+  return formatUnixTime(dtValue, offSet, options);
+}
+
+function formatUnixTime(dtValue, offSet, options = {}) {
+  const date = new Date((dtValue + offSet) * 1000);
+  return date.toLocaleTimeString([], { timeZone: "UTC", ...options });
+}
+
+// Event listener for location search
+userLocation.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    findUserLocation();
+  }
+});
