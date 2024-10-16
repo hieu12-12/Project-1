@@ -114,6 +114,7 @@ if(!data.current.is_day) {
 if(code == 1000) {
   app.style.backgroundImage = `
   url(/assets/images/${timeOfDay}/sunset\ cloud.jpg)`
+<<<<<<< HEAD
 }
 
 let timeOfDay = "day";
@@ -194,3 +195,6 @@ code == 1282
   app.style.opacity = "1";
  })
 
+=======
+}
+>>>>>>> 429525b (Updated README file)
