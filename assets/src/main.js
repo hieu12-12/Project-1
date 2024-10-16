@@ -103,3 +103,15 @@ function search(event) {
 }
 
 userLocation.addEventListener('keydown', search)
+
+let timeOfDay = "day";
+const code = data.current.condition.code;
+
+if(!data.current.is_day) {
+  timeOfDay ="night";
+}
+
+if(code == 1000) {
+  app.style.backgroundImage = `
+  url(/assets/images/${timeOfDay}/sunset\ cloud.jpg)`
+}
