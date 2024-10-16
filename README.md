@@ -2,7 +2,7 @@
 
 ## Description
 
-- Most people use information given from trusted weather apps to schedule their day or decide what they are going to wear. Our goal was to effectively apply our shared knowledge of HTML,CSS, API's, and Javascript to create an app that provides useful and accurate weather information for users. In ensuring we create a high quality app that possessed all necessary information, we began by identifying tasks and distributing based on individual request. If one of us had a problem with our tasks or anything related we would all set aside time to collaborate and solve the problem together which furthered our own knowledge (mainly with real-time data integration) and allowed us to build teamwork skills. 
+- Most people use information given from trusted weather apps to help schedule their day or decide what they are going to wear. Our goal was to effectively apply our shared knowledge of HTML,CSS, API's, and Javascript to create an app that provides useful and accurate weather information for users. In ensuring we create a high quality app that possessed all necessary information, we began by identifying tasks and distributing based on individual request. If one of us had a problem with our tasks or anything related we would all set aside time to collaborate and solve the problem together which furthered our own knowledge (mainly with real-time data integration) and allowed us to build teamwork skills. 
 
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
