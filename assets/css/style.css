@@ -7,8 +7,12 @@
   margin: 2rem auto;
   }
 
-  .input-group .fa-search:hover {
-    color: #444444 ; /* Color when hovered */
-    background-color: #9999990c;
+  .search-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
   }
   
+  .search-btn:hover {
+    color: #ff8500; 
+    transform: scale(1.3); 
+  }
