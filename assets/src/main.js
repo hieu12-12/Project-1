@@ -96,7 +96,7 @@ function updateBackground(data) {
   let code = data.weather[0].id;
   console.log("Weather condition code:", code);
 
-  // Clear weather (code 800)
+  // Clear weather 
   if (code == 800) { // Clear sky
     app.style.backgroundImage = `url('./assets/images/clear-cloud.jpg')`; 
     btn.style.background = timeOfDay === "night" ? "#181e27" : "#e5ba92"; 
