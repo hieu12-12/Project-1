@@ -9,8 +9,8 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 - [Installation](#installation 15)
 - [Usage](#usage 19)
-- [Credits](#credits 37)
-- [License](#license 45)
+- [Credits](#credits 32)
+- [License](#license 40)
 
 ## Installation
 
@@ -18,7 +18,7 @@ Click on the link https://github.com/hieu12-12/Project-1.git to open the project
 
 ## Usage
 
-Once the website is loaded, this will be your home screen:
+Once the website is loaded, your home screen will be visible.
 
 You are able to use the search bar to locate weather information for specified city/state. 
 
@@ -28,11 +28,6 @@ You are also able to conduct degree conversions using the drop-down button for F
 
 When you re-visit the app, the most recent location searched will be displayed.
 
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-
-<img>(assets/images/homepage.png)<img>
-[def]: assets/images/homepage.png
 
 ## Credits
 
@@ -84,10 +79,3 @@ SOFTWARE.
 -Current date/time provided
 
 
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-
-
-[def]: assets/images/homepage.png
