@@ -20,19 +20,19 @@ const WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?ap
   WEATHER_DATA_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&exclude=minutely&units=metric&`;
 
 document.addEventListener("DOMContentLoaded", () => {
+  userLocation.value = localStorage.getItem("location") || "Orlando";
+  converter.value = localStorage.getItem("tempType") || "°F";
   findUserLocation();
 });
 
 // Function to find user location and fetch weather data
 function findUserLocation() {
   Forecast.innerHTML = "";
-  const location = userLocation.value || localStorage.getItem("location") || "Orlando";
-  const tempType = converter.value || localStorage.getItem("tempType") || "°F";
 
-  localStorage.setItem("location", location);
-  localStorage.setItem("tempType", tempType);
+  localStorage.setItem("location", userLocation.value);
+  localStorage.setItem("tempType", converter.value);
 
-  fetch(WEATHER_API_ENDPOINT + location)
+  fetch(WEATHER_API_ENDPOINT + userLocation.value)
     .then((response) => response.json())
     .then((data) => {
       if (data.cod != 200) {
