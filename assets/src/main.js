@@ -97,19 +97,19 @@ function updateBackground(data) {
 
   // Clear weather 
   if (code == 800) { // Clear sky
-    app.style.backgroundImage = `url('../assets/images/clear-cloud.jpg')`; 
+    app.style.backgroundImage = `url('../assets/clear-cloud.jpg')`; 
 
   // Cloudy weather
   } else if ([801, 802, 803, 804].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/sunset-cloud.jpg')`; 
+    app.style.backgroundImage = `url('../assets/sunset-cloud.jpg')`; 
 
   // Rainy weather
   } else if ([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/raining-cloud.jpg')`;
+    app.style.backgroundImage = `url('../assets/raining-cloud.jpg')`;
 
   // Snowy weather
   } else if ([600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/snow-sky.jpg')`; 
+    app.style.backgroundImage = `url('../assets/snow-sky.jpg')`; 
   }
 
   // Ensure the app content is visible
