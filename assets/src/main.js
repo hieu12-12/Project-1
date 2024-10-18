@@ -13,7 +13,7 @@ const userLocation = document.getElementById("userLocation"),
   CValue = document.getElementById("CValue"),
   PValue = document.getElementById("PValue"),
   Forecast = document.querySelector(".forecast"),
-  app = document.querySelector(".app"),
+  app = document.querySelector("body"),
   btn = document.querySelector(".btn");
 
 const WEATHER_API_ENDPOINT = `https://api.openweathermap.org/data/2.5/weather?appid=3b4270389f20c03b9af3d0d9bc2619ae&q=`,
@@ -98,22 +98,22 @@ function updateBackground(data) {
 
   // Clear weather 
   if (code == 800) { // Clear sky
-    app.style.backgroundImage = `url('./assets/images/clear-cloud.jpg')`; 
+    app.style.backgroundImage = `url('../assets/images/clear-cloud.jpg')`; 
     btn.style.background = timeOfDay === "night" ? "#181e27" : "#e5ba92"; 
 
   // Cloudy weather
   } else if ([801, 802, 803, 804].includes(code)) { 
-    app.style.backgroundImage = `url('./assets/images/sunset-cloud.jpg')`; 
+    app.style.backgroundImage = `url('../assets/images/sunset-cloud.jpg')`; 
     btn.style.background = timeOfDay === "night" ? "#181e27" : "#fa6d1b";
 
   // Rainy weather
   } else if ([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].includes(code)) { 
-    app.style.backgroundImage = `url('./assets/images/raining-cloud.jpg')`; 
+    app.style.backgroundImage = `url('../assets/images/raining-cloud.jpg')`; 
     btn.style.background = timeOfDay === "night" ? "#325c80" : "#647d75";
 
   // Snowy weather
   } else if ([600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622].includes(code)) { 
-    app.style.backgroundImage = `url('./assets/images/snow-sky.jpg')`; 
+    app.style.backgroundImage = `url('../assets/images/snow-sky.jpg')`; 
     btn.style.background = timeOfDay === "night" ? "#1b1b1b" : "#4D72aa";
   }
 
