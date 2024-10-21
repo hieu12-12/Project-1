@@ -77,45 +77,6 @@ function TempConverter(temp) {
   return converter.value === "°C" ? `${tempValue}<span>°C</span>` : `${(tempValue * 9) / 5 + 32}<span>°F</span>`;
 }
 
-
-function updateBackground(data) {
-  // Log the entire weather data to check for errors
-  console.log(data);
-
-  
-  const currentTime = data.dt; 
-  const sunrise = data.sys.sunrise; 
-  const sunset = data.sys.sunset;
-
-  // Determine if it's day or night
-  let timeOfDay = currentTime >= sunrise && currentTime < sunset ? "day" : "night";
-  console.log("Time of day:", timeOfDay);
-
-  
-  let code = data.weather[0].id;
-  console.log("Weather condition code:", code);
-
-  // Clear weather 
-  if (code == 800) { // Clear sky
-    app.style.backgroundImage = `url('../assets/images/clear-cloud.jpg')`; 
-
-  // Cloudy weather
-  } else if ([801, 802, 803, 804].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/sunset-cloud.jpg')`; 
-
-  // Rainy weather
-  } else if ([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/raining-cloud.jpg')`;
-
-  // Snowy weather
-  } else if ([600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622].includes(code)) { 
-    app.style.backgroundImage = `url('../assets/images/snow-sky.jpg')`; 
-  }
-
-  // Ensure the app content is visible
-  app.style.opacity = "1";
-}
-
 // Function to format Unix time
 function getLongFormatDateTime(dtValue, offSet, options) {
   return formatUnixTime(dtValue, offSet, options);
